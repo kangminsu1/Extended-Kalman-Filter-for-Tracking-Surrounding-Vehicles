@@ -81,6 +81,7 @@ def Init_EKF(current_info, DT):
 
     return __x, __P
 
+# Prediction과 Update를 수행하는 부
 def EKF(X, P, measurement, DT):
     __z = np.array([[measurement[0], measurement[1]]]).T
 
