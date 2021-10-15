@@ -35,12 +35,14 @@ def compute_F_and_Q(DT):
 
     return __F, __Q
 
+# State Vector 예측 부
 def predict(x, F, P, Q):
     state_x = F @ x
     state_p = (F @ P @ F.T) + Q
 
     return state_x, state_p
 
+# State Vector 업데이트 부
 def update(X, P, Z):
     __HL = np.array([[1, 0, 0, 0],
                      [0, 1, 0, 0]])
@@ -62,6 +64,7 @@ def update(X, P, Z):
 
     return X, P
 
+# 초기 State Vector 설정 부 [x, y, yaw, velocity] 
 def Init_EKF(current_info, DT):
     __x = np.array([[current_info[0], current_info[1], 0.0, 0.0]]).T
 
